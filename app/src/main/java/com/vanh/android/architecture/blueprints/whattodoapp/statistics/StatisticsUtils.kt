@@ -24,9 +24,14 @@ import com.vanh.android.architecture.blueprints.whattodoapp.data.Task
 internal fun getActiveAndCompletedStats(tasks: List<Task>?): StatsResult {
     val totalTasks = tasks!!.size
     val numberOfActiveTasks = tasks.count { it.isActive }
+    val x = 100f * numberOfActiveTasks / tasks.size
     return StatsResult(
-        activeTasksPercent = 100f * numberOfActiveTasks / tasks.size,
-        completedTasksPercent = 100f * (totalTasks - numberOfActiveTasks) / tasks.size
+        activeTasksPercent = if(tasks.size != 0)
+                                100f * numberOfActiveTasks / tasks.size
+                             else 0.0f,
+        completedTasksPercent = if(tasks.size != 0)
+                                    100f * (totalTasks - numberOfActiveTasks) / tasks.size
+                                else 0.0f
     )
 }
 

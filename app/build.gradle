@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: 'de.mannodermaus.android-junit5'
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -32,6 +33,7 @@ android {
         dataBinding true
         //enabledForTests  true
     }
+
 }
 
 dependencies {
@@ -59,9 +61,14 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
 
+    /// Testing section
     // Dependencies for local unit tests
     testImplementation "junit:junit:$junitVersion"
 
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    testImplementation "org.junit.jupiter:junit-jupiter-params:5.3.2"
+    testRuntimeOnly "org.junit.vintage:junit-vintage-engine:5.3.2"
     // AndroidX Test - Instrumented testing
     androidTestImplementation "androidx.test.ext:junit:$androidXTestExtKotlinRunnerVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
