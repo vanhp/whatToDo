@@ -130,10 +130,8 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
         loadTasks(false)
     }
 
-    private fun setFilter(
-        @StringRes filteringLabelString: Int, @StringRes noTasksLabelString: Int,
-        @DrawableRes noTaskIconDrawable: Int, tasksAddVisible: Boolean
-    ) {
+    private fun setFilter( @StringRes filteringLabelString: Int, @StringRes noTasksLabelString: Int,
+                            @DrawableRes noTaskIconDrawable: Int, tasksAddVisible: Boolean) {
         _currentFilteringLabel.value = filteringLabelString
         _noTasksLabel.value = noTasksLabelString
         _noTaskIconRes.value = noTaskIconDrawable
