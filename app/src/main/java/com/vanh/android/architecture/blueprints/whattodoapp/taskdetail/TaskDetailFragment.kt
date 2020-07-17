@@ -33,6 +33,7 @@ import com.vanh.android.architecture.blueprints.whattodoapp.tasks.DELETE_RESULT_
 import com.vanh.android.architecture.blueprints.whattodoapp.util.setupRefreshLayout
 import com.vanh.android.architecture.blueprints.whattodoapp.util.setupSnackbar
 import com.google.android.material.snackbar.Snackbar
+import com.vanh.android.architecture.blueprints.whattodoapp.data.source.DefaultTasksRepository
 
 /**
  * Main UI for the task detail screen.
@@ -42,7 +43,9 @@ class TaskDetailFragment : Fragment() {
 
     private val args: TaskDetailFragmentArgs by navArgs()
 
-    private val viewModel by viewModels<TaskDetailViewModel>()
+    private val viewModel by viewModels<TaskDetailViewModel>{
+        TasksDetailViewModelFactory(DefaultTasksRepository.getRepository(requireActivity().application))
+    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -53,12 +56,12 @@ class TaskDetailFragment : Fragment() {
     }
 
     private fun setupNavigation() {
-        viewModel.deleteTaskEvent.observe(this, EventObserver {
+        viewModel.deleteTaskEvent.observe(viewLifecycleOwner, EventObserver {
             val action = TaskDetailFragmentDirections
                 .actionTaskDetailFragmentToTasksFragment(DELETE_RESULT_OK)
             findNavController().navigate(action)
         })
-        viewModel.editTaskEvent.observe(this, EventObserver {
+        viewModel.editTaskEvent.observe(viewLifecycleOwner, EventObserver {
             val action = TaskDetailFragmentDirections
                 .actionTaskDetailFragmentToAddEditTaskFragment(
                     args.taskId,

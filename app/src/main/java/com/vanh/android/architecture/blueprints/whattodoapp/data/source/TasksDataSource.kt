@@ -24,7 +24,6 @@ import com.vanh.android.architecture.blueprints.whattodoapp.data.Task
  */
 interface TasksDataSource {
 
-
     fun observeTasks(): LiveData<Result<List<Task>>>
 
     suspend fun getTasks(): Result<List<Task>>

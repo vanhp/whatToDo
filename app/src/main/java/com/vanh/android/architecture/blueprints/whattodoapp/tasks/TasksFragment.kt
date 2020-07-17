@@ -36,6 +36,7 @@ import com.vanh.android.architecture.blueprints.whattodoapp.util.setupRefreshLay
 import com.vanh.android.architecture.blueprints.whattodoapp.util.setupSnackbar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
+import com.vanh.android.architecture.blueprints.whattodoapp.data.source.DefaultTasksRepository
 import timber.log.Timber
 
 /**
@@ -43,7 +44,9 @@ import timber.log.Timber
  */
 class TasksFragment : Fragment() {
 
-    private val viewModel by viewModels<TasksViewModel>()
+    private val viewModel by viewModels<TasksViewModel>{
+        TasksViewModelFactory(DefaultTasksRepository.getRepository(requireActivity().application))
+    }
 
     private val args: TasksFragmentArgs by navArgs()
 
@@ -96,10 +99,10 @@ class TasksFragment : Fragment() {
     }
 
     private fun setupNavigation() {
-        viewModel.openTaskEvent.observe(this, EventObserver {
+        viewModel.openTaskEvent.observe(viewLifecycleOwner, EventObserver {
             openTaskDetails(it)
         })
-        viewModel.newTaskEvent.observe(this, EventObserver {
+        viewModel.newTaskEvent.observe(viewLifecycleOwner, EventObserver {
             navigateToAddNewTask()
         })
     }
