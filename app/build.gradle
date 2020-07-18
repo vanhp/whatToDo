@@ -81,6 +81,8 @@ dependencies {
 //    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 //    testImplementation "org.junit.jupiter:junit-jupiter-params:5.6.2"
 //    testRuntimeOnly "org.junit.vintage:junit-vintage-engine:5.6.2"
+
+    // UI testing with espresso
     // AndroidX Test - Instrumented testing
     androidTestImplementation "androidx.test.ext:junit:$androidXTestExtKotlinRunnerVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
@@ -95,5 +97,7 @@ dependencies {
     debugImplementation 'androidx.fragment:fragment-testing:1.2.5'
    // Implementation "androidx.fragment:fragment-testing:$fragmentVersion"
     implementation "androidx.test:core:$androidXTestCoreVersion"
+
+
 
 }
