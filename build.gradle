@@ -33,8 +33,8 @@ ext {
     // Sdk and tools
     // Support library and architecture components support minSdk 14 and above.
     minSdkVersion = 19
-    targetSdkVersion = 29
-    compileSdkVersion = 29
+    targetSdkVersion = 28
+    compileSdkVersion = 28
 
     // App dependencies
     androidXVersion = '1.0.0'
@@ -50,7 +50,7 @@ ext {
     coroutinesVersion = '1.3.4'
     dexMakerVersion = '2.12.1'
     espressoVersion = '3.3.0-rc01'
-    fragmentVersion = '1.1.0-alpha07'
+    fragmentVersion = '1.3.0-alpha06'
     fragmentKtxVersion = '1.2.5'
     hamcrestVersion = '1.3'
     junitVersion = '4.13'
