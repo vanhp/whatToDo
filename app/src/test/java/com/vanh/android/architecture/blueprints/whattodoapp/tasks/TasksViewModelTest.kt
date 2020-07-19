@@ -9,6 +9,7 @@ import com.vanh.android.architecture.blueprints.whattodoapp.Event
 import com.vanh.android.architecture.blueprints.whattodoapp.R
 import com.vanh.android.architecture.blueprints.whattodoapp.data.Task
 import com.vanh.android.architecture.blueprints.whattodoapp.data.source.FakeTestRepository
+import com.vanh.android.architecture.blueprints.whattodoapp.data.source.MainCoroutineRule
 import com.vanh.android.architecture.blueprints.whattodoapp.getOrAwaitValue
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -37,20 +38,23 @@ internal class TasksViewModelTest{
     private lateinit var tasksRepository: FakeTestRepository
 
     @ExperimentalCoroutinesApi
-    val testDispatcher: TestCoroutineDispatcher = TestCoroutineDispatcher()
-
-    @ExperimentalCoroutinesApi
-    @Before
-    fun setupDispatcher() {
-        Dispatchers.setMain(testDispatcher)
-    }
-
-    @ExperimentalCoroutinesApi
-    @After
-    fun tearDownDispatcher() {
-        Dispatchers.resetMain()
-        testDispatcher.cleanupTestCoroutines()
-    }
+    @get:Rule
+    var mainCoroutineRule = MainCoroutineRule()
+//    @ExperimentalCoroutinesApi
+//    val testDispatcher: TestCoroutineDispatcher = TestCoroutineDispatcher()
+//
+//    @ExperimentalCoroutinesApi
+//    @Before
+//    fun setupDispatcher() {
+//        Dispatchers.setMain(testDispatcher)
+//    }
+//
+//    @ExperimentalCoroutinesApi
+//    @After
+//    fun tearDownDispatcher() {
+//        Dispatchers.resetMain()
+//        testDispatcher.cleanupTestCoroutines()
+//    }
 
     @Before
     fun setupViewModel(){
