@@ -23,26 +23,27 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.vanh.android.architecture.blueprints.whattodoapp.R
+import com.vanh.android.architecture.blueprints.whattodoapp.WhatTodoApplication
+import com.vanh.android.architecture.blueprints.whattodoapp.data.source.DefaultTasksRepository
+//import com.vanh.android.architecture.blueprints.whattodoapp.WhatTodoApplication
 import com.vanh.android.architecture.blueprints.whattodoapp.databinding.StatisticsFragBinding
 import com.vanh.android.architecture.blueprints.whattodoapp.util.setupRefreshLayout
-
+import com.vanh.android.architecture.blueprints.whattodoapp.data.source.TasksRepository
 /**
  * Main UI for the statistics screen.
  */
 class StatisticsFragment : Fragment() {
 
     private lateinit var viewDataBinding: StatisticsFragBinding
+//private val viewModel by viewModels<TasksViewModel>()
+    private val viewModel by viewModels<StatisticsViewModel>{
+//         StatisticsViewModelFactory(
+//                 (requireContext().applicationContext as WhatTodoApplication).taskRepository)
+    StatisticsViewModelFactory(DefaultTasksRepository.getRepository(requireActivity().application))
+    }
 
-    private val viewModel by viewModels<StatisticsViewModel>()
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        viewDataBinding = DataBindingUtil.inflate(
-            inflater, R.layout.statistics_frag, container,
-            false
-        )
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        viewDataBinding = DataBindingUtil.inflate(inflater, R.layout.statistics_frag, container, false)
         return viewDataBinding.root
     }
 
