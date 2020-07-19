@@ -47,6 +47,7 @@ class TaskDetailFragmentTest {
         // WHEN - Details fragment launched to display task
         val bundle = TaskDetailFragmentArgs(activeTask.id).toBundle()
         launchFragmentInContainer<TaskDetailFragment>(bundle, R.style.AppTheme)
+        //Thread.sleep(2000)
 
         // THEN - Task details are displayed on the screen
         // make sure that the title/description are both shown and correct
