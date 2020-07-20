@@ -98,6 +98,9 @@ dependencies {
     // DB testing
     androidTestImplementation "androidx.arch.core:core-testing:$archTestingVersion"
 
+    // end to end testing
+    implementation "androidx.test.espresso:espresso-idling-resource:$espressoVersion"
+
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
     implementation "androidx.fragment:fragment-ktx:$fragmentKtxVersion"
