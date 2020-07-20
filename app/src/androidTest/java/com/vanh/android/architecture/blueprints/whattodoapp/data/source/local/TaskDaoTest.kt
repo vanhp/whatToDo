@@ -19,6 +19,7 @@ import org.junit.runner.RunWith
 
 @ExperimentalCoroutinesApi
 @RunWith(AndroidJUnit4::class)
+ //test the DAO code only
 @SmallTest
 class TasksDaoTest {
 
